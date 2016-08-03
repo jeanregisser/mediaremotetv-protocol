@@ -1,0 +1,19 @@
+# Summary
+
+* [Introduction](README.md)
+* [Service Discovery](discovery/README.md)
+* [Communication](communication/README.md)
+  * [Protocol Message](communication/README.md#message)
+  * [Initiating a Connection](communication/README.md#connection)
+* [Pairing](pairing/README.md)
+  * [Pairing with a New Apple TV](pairing/README.md#new)
+  * [Verifying Existing Pairing](pairing/README.md#existing)
+* [Controls](controls/README.md)
+ * [Ready](controls/Ready.md)
+ * [Client Updates Config](controls/ClientUpdatesConfig.md)
+ * [Notifications](controls/Notifications.md)
+ * [Touch Device](controls/TouchDevice.md)
+ * [Keyboard](controls/Keyboard.md)
+ * [Game Controller](controls/GameController.md)
+ * [Voice Input Device](controls/VoiceInputDevice.md)
+

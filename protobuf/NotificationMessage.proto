@@ -1,0 +1,9 @@
+import "ProtocolMessage.proto";
+
+extend ProtocolMessage {
+  optional NotificationMessage notificationMessage = 16;
+}
+
+message NotificationMessage {
+  repeated string notification = 1;
+}

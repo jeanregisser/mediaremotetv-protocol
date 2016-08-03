@@ -1,0 +1,9 @@
+import "ProtocolMessage.proto";
+
+extend ProtocolMessage {
+  optional RegisterForGameControllerEventsMessage registerForGameControllerEventsMessage = 27;
+}
+
+message RegisterForGameControllerEventsMessage {
+  optional int32 inputModeFlags = 1;
+}

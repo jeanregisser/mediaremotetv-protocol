@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "edit-link",
+    "include-codeblock"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/jeanregisser/mediaremotetv-protocol/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/jeanregisser/mediaremotetv-protocol/"
+    }
+  }
+}

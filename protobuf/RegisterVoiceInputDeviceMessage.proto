@@ -1,0 +1,10 @@
+import "ProtocolMessage.proto";
+import "VoiceInputDeviceDescriptor.proto";
+
+extend ProtocolMessage {
+  optional RegisterVoiceInputDeviceMessage registerVoiceInputDeviceMessage = 11;
+}
+
+message RegisterVoiceInputDeviceMessage {
+  optional VoiceInputDeviceDescriptor deviceDescriptor = 1;
+}
