@@ -21,14 +21,14 @@ All this information has been gathered by using various techniques of reverse en
 
 Please don’t e-mail me about this, I won’t reply. In fact, none of this is actually required to be able to control the Apple TV.
 
-# Content
+## Content
 
 * [Service Discovery](discovery/README.md)
 * [Communication](communication/README.md)
 * [Pairing](pairing/README.md)
 * [Controls](controls/README.md)
 
-# Thanks
+## Thanks
 
 The pairing and encryption details wouldn't have been possible without the prior work done on reverse engineering the HomeKit protocol
 - https://github.com/KhaosT/HAP-NodeJS

@@ -1,3 +1,5 @@
+# Controls 
+
  * [Ready](Ready.md)
  * [Client Updates Config](ClientUpdatesConfig.md)
  * [Notifications](Notifications.md)

@@ -1,3 +1,5 @@
+# Touch Device
+
 To be able to send touch events, the client sends a `RegisterHIDDeviceMessage`.
 
 [include](../protobuf/RegisterHIDDeviceMessage.proto)

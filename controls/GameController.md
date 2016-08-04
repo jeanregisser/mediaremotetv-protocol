@@ -1,3 +1,5 @@
+# Game Controller
+
 After sending the [ready state](Ready.md) message, the Apple TV sends back a `RegisterForGameControllerEventsMessage`.
 
 [include](../protobuf/RegisterForGameControllerEventsMessage.proto)

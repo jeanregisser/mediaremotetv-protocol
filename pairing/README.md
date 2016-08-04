@@ -1,3 +1,5 @@
+# Pairing
+
 The pairing process uses the [SRP protocol](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).
 It is similar to the pairing process used in HomeKit.
 
@@ -7,7 +9,7 @@ It uses `CryptoPairingMessage`.
 
 `pairingData` contains [TLV8](https://en.wikipedia.org/wiki/Type-length-value) encoded data.
 
-# Pairing with a New Apple TV {#new}
+## Pairing with a New Apple TV {#new}
 
 > **CLIENT -> SERVER**
 ```txt
@@ -112,7 +114,7 @@ priority: 0
 
 Client then starts verifying the pairing.
 
-# Verifying Existing Pairing {#existing}
+## Verifying Existing Pairing {#existing}
 
 > **CLIENT -> SERVER**
 ```txt
