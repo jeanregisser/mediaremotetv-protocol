@@ -26,6 +26,7 @@ Please don’t e-mail me about this, I won’t reply. In fact, none of this is a
 * [Service Discovery](discovery/README.md)
 * [Communication](communication/README.md)
 * [Pairing](pairing/README.md)
+* [Encryption](encryption/README.md)
 * [Controls](controls/README.md)
 
 ## Thanks

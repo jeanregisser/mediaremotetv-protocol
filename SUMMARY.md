@@ -8,6 +8,8 @@
 * [Pairing](pairing/README.md)
   * [Pairing with a New Apple TV](pairing/README.md#new)
   * [Verifying Existing Pairing](pairing/README.md#existing)
+* [Encryption](encryption/README.md)
+  * [Decryption Example](encryption/README.md#decryption-example)
 * [Controls](controls/README.md)
  * [Ready](controls/Ready.md)
  * [Client Updates Config](controls/ClientUpdatesConfig.md)
