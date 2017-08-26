@@ -1,3 +1,5 @@
+# Voice Input Device
+
 To be able to send voice commands, the client first sends a `RegisterVoiceInputDeviceMessage`.
 
 [include](../protobuf/RegisterVoiceInputDeviceMessage.proto)
