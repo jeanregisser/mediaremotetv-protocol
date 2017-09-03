@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 message VirtualTouchDeviceDescriptor {
   optional bool absolute = 1;
   optional bool integratedDisplay = 2;
