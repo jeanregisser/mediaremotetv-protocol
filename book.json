@@ -1,7 +1,7 @@
 {
   "plugins": [
     "edit-link",
-    "include-codeblock"
+    "include-codeblock@3.1.0"
   ],
   "pluginsConfig": {
     "edit-link": {
