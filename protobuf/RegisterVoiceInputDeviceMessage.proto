@@ -4,7 +4,7 @@ import "ProtocolMessage.proto";
 import "VoiceInputDeviceDescriptor.proto";
 
 extend ProtocolMessage {
-  optional RegisterVoiceInputDeviceMessage registerVoiceInputDeviceMessage = 11;
+  optional RegisterVoiceInputDeviceMessage registerVoiceInputDeviceMessage = 33;
 }
 
 message RegisterVoiceInputDeviceMessage {
