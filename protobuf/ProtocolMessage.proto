@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 message ProtocolMessage {
   extensions 6 to max;
 
