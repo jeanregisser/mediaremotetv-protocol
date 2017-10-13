@@ -1,6 +1,6 @@
 # Communication
 
-MediaRemoteTV is a TCP based protocol which uses length prefixed protobuf encoded messages to communicate between the client and server.
+MediaRemoteTV is a TCP based protocol which uses length prefixed protobuf encoded messages to communicate between the client and server. The prefixed length is encoded as a Google Protobuf [base 128 variant](https://developers.google.com/protocol-buffers/docs/encoding#varints).
 
 The Apple TV acts as the server and clients can connect to it in order to issue various commands (playback, keyboard, voice, game controller, etc).
 
@@ -11,6 +11,14 @@ All messages are encrypted after negotiating the [pairing](../pairing/README.md)
 Each message exchanged between the Apple TV and the remote client is wrapped in a common envelope which contains the type of the message among other fields.
 
 [include](../protobuf/ProtocolMessage.proto)
+
+### Identifiers {#protocol-message-identifier}
+
+As MediaRemoteTV is an asynchronous protocol, identifiers are used to map a responses to requests. By setting `identifier` in the envelope message (`ProtocolMessage`) to a random UUID4 before sending it, the response will contain the same identifier upon reception.
+
+Not all messages use identifiers, nor does all of them support it. A message will only contain an identifer if it was triggered by a request. No "events" (e.g. status updates about playing media) messages will contain identifiers. Also, some other messages implicitly does not support it, like `CryptoPairingMessage`. In the latter case, no messages of other types can occur simultaneously so identifiers are not needed.
+
+An example of a message using an `identifier` can be seen below: `DeviceInfoMessage`
 
 ## Initiating a Connection {#connection}
 
