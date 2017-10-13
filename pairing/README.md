@@ -1,7 +1,6 @@
 # Pairing
 
-The pairing process uses the [SRP protocol](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol).
-It is similar to the pairing process used in HomeKit.
+The pairing process uses the [SRP protocol](https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol). The actual process is more or less the same as the one used by HomeKit, so the [HomeKit API reference](https://developer.apple.com/support/homekit-accessory-protocol/) released by Apple is a good read when understading the process.
 
 It uses `CryptoPairingMessage`.
 
@@ -9,9 +8,22 @@ It uses `CryptoPairingMessage`.
 
 `pairingData` contains [TLV8](https://en.wikipedia.org/wiki/Type-length-value) encoded data.
 
+## Differences Compared to HomeKit
+
+When deriving new encryption keys, use the following HKDF-parameters:
+
+* Salt: MediaRemote-Salt
+* Data: MediaRemote-Write-Encryption-Key
+
+When deriving new decryption keys, use the following HKDF-parameters:
+
+* Salt: MediaRemote-Salt
+* Data: MediaRemote-Read-Encryption-Key
+
 ## Pairing with a New Apple TV {#new}
 
 > **CLIENT -> SERVER**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -22,12 +34,14 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
-0: 0x00 // ??
+0: 0x00 // METHOD
 6: 0x01 // SEQUENCE_NUM
 ```
 
 > **SERVER -> CLIENT**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -38,6 +52,7 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 2: bytes[16] // SALT
 3: bytes[384] // PUBLIC_KEY
@@ -48,6 +63,7 @@ At this point a 4 digits PIN is displayed on the Apple TV.
 The client uses it to derive the password proof in the next message.
 
 > **CLIENT -> SERVER**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -58,6 +74,7 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 3: bytes[384] // PUBLIC_KEY
 4: bytes[64] // PASSWORD_PROOF
@@ -65,6 +82,7 @@ priority: 0
 ```
 
 > **SERVER -> CLIENT**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -75,12 +93,14 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 4: bytes[64] // PASSWORD_PROOF
 6: 0x04 // SEQUENCE_NUM
 ```
 
 > **CLIENT -> SERVER**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -91,12 +111,14 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 5: bytes[154] // ENCRYPTED_DATA
 6: 0x05 // SEQUENCE_NUM
 ```
 
 > **SERVER -> CLIENT**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -107,6 +129,7 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 5: bytes[154] // ENCRYPTED_DATA
 6: 0x06 // SEQUENCE_NUM
@@ -117,6 +140,7 @@ Client then starts verifying the pairing.
 ## Verifying Existing Pairing {#existing}
 
 > **CLIENT -> SERVER**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -127,12 +151,14 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 3: bytes[32] // PUBLIC_KEY
 6: 0x01 // SEQUENCE_NUM
 ```
 
 > **SERVER -> CLIENT**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -143,6 +169,7 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 3: bytes[32] // PUBLIC_KEY
 5: bytes[120] // ENCRYPTED_DATA
@@ -150,6 +177,7 @@ priority: 0
 ```
 
 > **CLIENT -> SERVER**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -160,12 +188,14 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 5: bytes[120] // ENCRYPTED_DATA
 6: 0x03 // SEQUENCE_NUM
 ```
 
 > **SERVER -> CLIENT**
+
 ```txt
 type: CRYPTO_PAIRING_MESSAGE
 priority: 0
@@ -176,8 +206,20 @@ priority: 0
 ```
 
 >> *Decoded TLV*
+
 ```txt
 6: 0x04 // SEQUENCE_NUM
 ```
 
 Once pairing is successful, all subsequent messages are encrypted using ChaCha20-Poly1305.
+
+## Outcome of Pairing
+
+After pairing has succeeded each side (Apple TV and Remote app) will have the following data:
+
+* Long-Term-Signing-Key (LTSK) - 32 byte
+* Long-Term-Public-Key (LTPK) - 32 byte
+* Apple TV Identifier - 36 byte
+* iOS Identifier - 36 byte
+
+The keys (LTSK and LTPK) are generated per-device, meaning they are different on each device. LTSK is never publically exchanged. These parameters must be persistently stored and are used to derive a "shared secret" (=encryption key) for new sessions without having to pair again. If they are lost, the pairing process must be performed again.
