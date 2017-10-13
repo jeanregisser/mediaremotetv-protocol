@@ -36,6 +36,8 @@ message ProtocolMessage {
     CRYPTO_PAIRING_MESSAGE = 34; 
     GAME_CONTROLLER_PROPERTIES_MESSAGE = 35;
     SET_READY_STATE_MESSAGE = 36;
+    SET_CONNECTION_STATE_MESSAGE = 38;
+    SET_HILITE_MODE_MESSAGE = 40;
     WAKE_DEVICE_MESSAGE = 41;
     SEND_PACKED_VIRTUAL_TOUCH_EVENT_MESSAGE = 43;
   }
@@ -78,5 +80,7 @@ message ProtocolMessage {
 //  optional CryptoPairingMessage cryptoPairingMessage = 39;
 //  optional GameControllerPropertiesMessage gameControllerPropertiesMessage = 40;
 //  optional SetReadyStateMessage setReadyStateMessage = 41;
+//  optional SetConnectionStateMessage setConnectionStateMessage = 42;
+//  optional SetHiliteModeMessage setHiliteModeMessage = 44;
 //  optional SendPackedVirtualTouchEventMessage sendPackedVirtualTouchEventMessage = 47;
 }

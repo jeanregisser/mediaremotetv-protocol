@@ -7,5 +7,9 @@ extend ProtocolMessage {
 }
 
 message RegisterForGameControllerEventsMessage {
-  optional int32 inputModeFlags = 1;
+  enum InputModeFlags {
+    None = 0;
+  }
+
+  optional InputModeFlags inputModeFlags = 1;
 }
