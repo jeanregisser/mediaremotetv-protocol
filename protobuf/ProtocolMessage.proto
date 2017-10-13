@@ -36,11 +36,14 @@ message ProtocolMessage {
     CRYPTO_PAIRING_MESSAGE = 34; 
     GAME_CONTROLLER_PROPERTIES_MESSAGE = 35;
     SET_READY_STATE_MESSAGE = 36;
+    WAKE_DEVICE_MESSAGE = 41;
+    SEND_PACKED_VIRTUAL_TOUCH_EVENT_MESSAGE = 43;
   }
 
   required Type type = 1; // Identifies which underlying message is filled in.
   optional string identifier = 2;
   optional int32 priority = 4;
+  optional uint64 timestamp = 5;
 
   // One of the following will be filled in.
 //  optional SendCommandMessage sendCommandMessage = 6;
@@ -75,4 +78,5 @@ message ProtocolMessage {
 //  optional CryptoPairingMessage cryptoPairingMessage = 39;
 //  optional GameControllerPropertiesMessage gameControllerPropertiesMessage = 40;
 //  optional SetReadyStateMessage setReadyStateMessage = 41;
+//  optional SendPackedVirtualTouchEventMessage sendPackedVirtualTouchEventMessage = 47;
 }
