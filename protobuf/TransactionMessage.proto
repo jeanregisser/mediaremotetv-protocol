@@ -96,14 +96,8 @@ message TransactionMessage {
 
   message TransactionPacket {
     optional TransactionKey key = 1;
-
-    // TODO: In the real message, packetData is just bytes. But in reality it
-    // corresponds to ContentItem. Maybe different types are (or will) be valid
-    // and the the receiver must try to decode all available types? Will have
-    // to dig into this in the future, but will leave ContentItem here for now.
     //optional bytes packetData = 2;
-    optional ContentItem packetData = 2;
-
+    optional ContentItem contentItem = 2;
     optional string identifier = 3;
     optional uint64 totalLength = 4;
     optional uint64 totalWritePosition = 5;
