@@ -10,4 +10,5 @@ extend ProtocolMessage {
 message KeyboardMessage {
   optional int32 state = 1;
   optional TextEditingAttributes attributes = 3;
+  optional bytes encryptedTextCyphertext = 4;
 }

@@ -6,14 +6,17 @@ message ProtocolMessage {
   enum Type { 
     SEND_COMMAND_MESSAGE = 1;
     SEND_COMMAND_RESULT_MESSAGE = 2;
+    GET_STATE_MESSAGE = 3;
     SET_STATE_MESSAGE = 4;
     SET_ARTWORK_MESSAGE = 5;
     REGISTER_HID_DEVICE_MESSAGE = 6;
     REGISTER_HID_DEVICE_RESULT_MESSAGE = 7;
     SEND_HID_EVENT_MESSAGE = 8;
+    SEND_HID_REPORT_MESSAGE = 9;
     SEND_VIRTUAL_TOUCH_EVENT_MESSAGE = 10;
     NOTIFICATION_MESSAGE = 11;
     CONTENT_ITEMS_CHANGED_NOTIFICATION_MESSAGE = 12;
+    // 13-14 not used
     DEVICE_INFO_MESSAGE = 15; 
     CLIENT_UPDATES_CONFIG_MESSAGE = 16;
     VOLUME_CONTROL_AVAILABILITY_MESSAGE = 17;
@@ -36,43 +39,22 @@ message ProtocolMessage {
     CRYPTO_PAIRING_MESSAGE = 34; 
     GAME_CONTROLLER_PROPERTIES_MESSAGE = 35;
     SET_READY_STATE_MESSAGE = 36;
+    DEVICE_INFO_UPDATE_MESSAGE = 37;
+    SET_CONNECTION_STATE_MESSAGE = 38;
+    SEND_BUTTON_EVENT_MESSAGE = 39;
+    SET_HILITE_MODE_MESSAGE = 40;
+    WAKE_DEVICE_MESSAGE = 41;
+    GENERIC_MESSAGE = 42;
+    SEND_PACKED_VIRTUAL_TOUCH_EVENT_MESSAGE = 43;
+    SEND_LYRICS_EVENT_MESSAGE = 44;
+    SET_NOW_PLAYING_CLIENT_MESSAGE = 46;
+    SET_NOW_PLAYING_PLAYER_MESSAGE = 47;
   }
 
   required Type type = 1; // Identifies which underlying message is filled in.
   optional string identifier = 2;
-  optional int32 priority = 4;
+  optional string authenticationToken = 3;
+  optional int32 errorCode = 4;
+  optional uint64 timestamp = 5;
 
-  // One of the following will be filled in.
-//  optional SendCommandMessage sendCommandMessage = 6;
-//  optional SendCommandResultMessage sendCommandResultMessage = 7;
-//  optional SetStateMessage setStateMessage = 9;
-//  optional SetArtworkMessage setArtworkMessage = 10;
-//  optional RegisterHIDDeviceMessage registerHIDDeviceMessage = 11;
-//  optional RegisterHIDDeviceResultMessage registerHIDDeviceResultMessage = 12;
-//  optional SendHIDEventMessage sendHIDEventMessage = 13;
-//  optional SendVirtualTouchEventMessage sendVirtualTouchEventMessage = 15;
-//  optional NotificationMessage notificationMessage = 16;
-//  optional ContentItemsChangedNotificationMessage contentItemsChangedNotificationMessage = 17;
-//  optional DeviceInfoMessage deviceInfoMessage = 20;
-//  optional ClientUpdatesConfigMessage clientUpdatesConfigMessage = 21;
-//  optional VolumeControlAvailabilityMessage volumeControlAvailabilityMessage = 22;
-//  optional GameControllerMessage gameControllerMessage = 23;
-//  optional RegisterGameControllerMessage registerGameControllerMessage = 24;
-//  optional RegisterGameControllerResponseMessage registerGameControllerResponseMessage = 25;
-//  optional UnregisterGameControllerMessage unregisterGameControllerMessage = 26;
-//  optional RegisterForGameControllerEventsMessage registerForGameControllerEventsMessage = 27;
-//  optional KeyboardMessage keyboardMessage = 28;
-//  optional GetKeyboardSessionMessage getKeyboardSessionMessage = 29;
-//  optional TextInputMessage textInputMessage = 30;
-//  optional GetVoiceInputDevicesMessage getVoiceInputDevicesMessage = 31;
-//  optional GetVoiceInputDevicesResponseMessage getVoiceInputDevicesResponseMessage = 32;
-//  optional RegisterVoiceInputDeviceMessage registerVoiceInputDeviceMessage = 33;
-//  optional RegisterVoiceInputDeviceResponseMessage registerVoiceInputDeviceResponseMessage = 34;
-//  optional SetRecordingStateMessage setRecordingStateMessage = 35;
-//  optional SendVoiceInputMessage sendVoiceInputMessage = 36;
-//  optional GetPlaybackQueueMessage getPlaybackQueueMessage = 37;
-//  optional TransactionMessage transactionMessage = 38;
-//  optional CryptoPairingMessage cryptoPairingMessage = 39;
-//  optional GameControllerPropertiesMessage gameControllerPropertiesMessage = 40;
-//  optional SetReadyStateMessage setReadyStateMessage = 41;
 }

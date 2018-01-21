@@ -38,14 +38,14 @@ message TextInputTraits {
     CONTINUE = 11;
   }
 
-//   optional AutocapitalizationType autocapitalizationType = ?;
-//   optional bool autocorrection = ?;
-//   repeated int64 PINEntrySeparatorIndexes = ?;
-//   optional bool enablesReturnKeyAutomatically = ?;
-//   optional KeyboardType keyboardType = ?;
-//   optional ReturnKeyType returnKeyType = ?;
-//   optional bool secureTextEntry = ?;
-//   optional bool spellchecking = ?;
-//   optional int32 validTextRangeLength = ?;
-//   optional int32 validTextRangeLocation = ?;
+  optional AutocapitalizationType autocapitalizationType = 1;
+  optional KeyboardType keyboardType = 2;
+  optional ReturnKeyType returnKeyType = 3;
+  optional bool autocorrection = 4;
+  optional bool spellchecking = 5;
+  optional bool enablesReturnKeyAutomatically = 6;
+  optional bool secureTextEntry = 7;
+  optional uint64 validTextRangeLocation = 8;
+  optional uint64 validTextRangeLength = 9;
+  repeated uint64 PINEntrySeparatorIndexes = 10;
 }

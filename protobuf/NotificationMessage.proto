@@ -8,4 +8,5 @@ extend ProtocolMessage {
 
 message NotificationMessage {
   repeated string notification = 1;
+  repeated bytes userInfo = 2;
 }

@@ -1,0 +1,43 @@
+syntax = "proto2";
+
+import "ProtocolMessage.proto";
+import "DeviceInfoMessage.proto";
+import "CommandOptions.proto";
+
+extend ProtocolMessage {
+  optional SendCommandMessage sendCommandMessage = 6;
+}
+
+message Origin {
+  optional int32 type = 1;
+  optional string displayName = 2;
+  optional int32 identifier = 3;
+  optional DeviceInfoMessage deviceInfo = 4;
+}
+
+message NowPlayingClient {
+  optional int32 processIdentifier = 1;
+  optional string bundleIdentifier = 2;
+  optional string parentApplicationBundleIdentifier = 3;
+  optional int32 processUserIdentifier = 4;
+  optional int32 nowPlayingVisibility = 5;
+  // optional XXX tintColor = 6;
+}
+
+message NowPlayingPlayer {
+  optional string identifier = 1;
+  optional string displayName = 2;
+  optional bool isDefaultPlayer = 3;
+}
+
+message NowPlayingPlayerPath {
+  optional Origin origin = 1;
+  optional NowPlayingClient client = 2;
+  optional NowPlayingPlayer player = 3;
+}
+
+message SendCommandMessage {
+  optional int32 command = 1;
+  optional CommandOptions options = 2;
+  optional NowPlayingPlayerPath playerPath = 3;
+}
