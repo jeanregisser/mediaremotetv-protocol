@@ -13,7 +13,7 @@ Original encrypted data received over the tcp connection:
 19bbc5d6 67362344 a13ebbf0 c7b4e2aa 03029710 0f0f3b33 fbe3
 ```
 
-It's prefixed with its length as a [protobuf base 128 variant](https://developers.google.com/protocol-buffers/docs/encoding#varints), 0x19 so 25 bytes.
+It's prefixed with its length as a [protobuf base 128 varint](https://developers.google.com/protocol-buffers/docs/encoding#varints), 0x19 so 25 bytes.
 So the encrypted payload to decrypt is:
 
 ```txt

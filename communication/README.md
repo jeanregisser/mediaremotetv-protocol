@@ -1,6 +1,6 @@
 # Communication
 
-MediaRemoteTV is a TCP based protocol which uses length prefixed protobuf encoded messages to communicate between the client and server. The prefixed length is encoded as a Google Protobuf [base 128 variant](https://developers.google.com/protocol-buffers/docs/encoding#varints).
+MediaRemoteTV is a TCP based protocol which uses length prefixed protobuf encoded messages to communicate between the client and server. The prefixed length is encoded as a Google Protobuf [base 128 varint](https://developers.google.com/protocol-buffers/docs/encoding#varints).
 
 The Apple TV acts as the server and clients can connect to it in order to issue various commands (playback, keyboard, voice, game controller, etc).
 
